@@ -1,3 +1,5 @@
+import type { Charger } from '@/types/comparison';
+
 export const chargers: Charger[] = [
   {
     id: 'urban-charge-7',
@@ -12,6 +14,32 @@ export const chargers: Charger[] = [
       'Mobile app scheduling',
       'Built-in usage monitoring',
       'Type 2 charging cable',
+    ],
+    specifications: [
+      {
+        label: 'Power supply',
+        value: 'Single-phase',
+      },
+      {
+        label: 'Maximum output',
+        value: '7.4 kW',
+      },
+      {
+        label: 'Connector',
+        value: 'Type 2',
+      },
+      {
+        label: 'Cable length',
+        value: '5 metres',
+      },
+      {
+        label: 'Weather rating',
+        value: 'IP54',
+      },
+      {
+        label: 'Connectivity',
+        value: 'Wi-Fi',
+      },
     ],
   },
   {
@@ -28,6 +56,32 @@ export const chargers: Charger[] = [
       'Remote scheduling and energy monitoring',
       'Dynamic household load balancing',
     ],
+    specifications: [
+      {
+        label: 'Power supply',
+        value: 'Single or three-phase',
+      },
+      {
+        label: 'Maximum output',
+        value: '11 kW',
+      },
+      {
+        label: 'Connector',
+        value: 'Type 2',
+      },
+      {
+        label: 'Cable length',
+        value: '7 metres',
+      },
+      {
+        label: 'Weather rating',
+        value: 'IP65',
+      },
+      {
+        label: 'Connectivity',
+        value: 'Wi-Fi and Bluetooth',
+      },
+    ],
   },
   {
     id: 'drive-max-22',
@@ -41,6 +95,32 @@ export const chargers: Charger[] = [
       'Supports multiple driver profiles',
       'Advanced load balancing and usage reports',
       'RFID access control for shared installations',
+    ],
+    specifications: [
+      {
+        label: 'Power supply',
+        value: 'Three-phase',
+      },
+      {
+        label: 'Maximum output',
+        value: '22 kW',
+      },
+      {
+        label: 'Connector',
+        value: 'Type 2',
+      },
+      {
+        label: 'Cable length',
+        value: '7.5 metres',
+      },
+      {
+        label: 'Weather rating',
+        value: 'IP66',
+      },
+      {
+        label: 'Connectivity',
+        value: 'Wi-Fi, Ethernet and 4G',
+      },
     ],
   },
 ];

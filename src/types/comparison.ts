@@ -1,3 +1,8 @@
+export type ChargerSpecification = {
+  label: string;
+  value: string;
+};
+
 export type Charger = {
   id: string;
   name: string;
@@ -6,6 +11,7 @@ export type Charger = {
   image: string;
   badge?: string;
   features: string[];
+  specifications: ChargerSpecification[];
 };
 
 export type ComparisonValue = string | boolean;
