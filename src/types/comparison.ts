@@ -5,6 +5,7 @@ export type Charger = {
   description: string;
   image: string;
   badge?: string;
+  features: string[];
 };
 
 export type ComparisonValue = string | boolean;
