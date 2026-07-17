@@ -1,5 +1,6 @@
 import type { Charger } from '@/types/comparison';
 
+import { CardActions } from './CardActions';
 import { FeatureList } from './FeatureList';
 import { ProductSummary } from './ProductSummary';
 import { SpecificationList } from './SpecificationList';
@@ -29,6 +30,8 @@ export function ChargerCard({ charger, totalRows }: ChargerCardProps) {
       <ProductSummary charger={charger} />
 
       <FeatureList features={charger.features} />
+
+      <CardActions chargerName={charger.name} />
 
       <SpecificationList specifications={charger.specifications} />
     </article>

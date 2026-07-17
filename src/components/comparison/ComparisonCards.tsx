@@ -7,7 +7,7 @@ export function ComparisonCards() {
     ...chargers.map((charger) => charger.specifications.length),
   );
 
-  const totalRows = 2 + 1 + specificationCount;
+  const totalRows = 4 + specificationCount;
   // Product summary + features + specification heading + specification rows
 
   return (

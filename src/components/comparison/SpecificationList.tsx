@@ -21,7 +21,7 @@ export function SpecificationList({ specifications }: SpecificationListProps) {
       {specifications.map(({ label, value }) => (
         <dl
           key={label}
-          className="mx-6 grid grid-cols-2 items-start gap-4 border-b border-slate-200 py-3 text-sm last:border-b-0"
+          className="mx-6 grid grid-cols-2 items-start gap-4 border-b border-slate-200 py-3 text-sm"
         >
           <dt className="text-slate-500">{label}</dt>
 
