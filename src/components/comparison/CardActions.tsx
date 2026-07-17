@@ -25,7 +25,7 @@ export function CardActions({ chargerName }: CardActionsProps) {
           focus-visible:outline-teal-700
         "
       >
-        Check compatibility
+        Check home compatibility
       </button>
     </div>
   );

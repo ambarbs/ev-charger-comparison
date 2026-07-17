@@ -123,4 +123,85 @@ export const chargers: Charger[] = [
       },
     ],
   },
+  {
+    id: 'solar-flow-7',
+    name: 'SolarFlow 7',
+    price: '$1,099',
+    description:
+      'A solar-focused home charger designed to prioritise surplus rooftop energy and reduce grid usage.',
+    image: '/chargers/solar-flow-7.png',
+    badge: 'Best for solar',
+    features: [
+      'Up to 7.4 kW charging',
+      'Solar surplus charging mode',
+      'Automatic off-peak scheduling',
+      'Real-time household energy monitoring',
+    ],
+    specifications: [
+      {
+        label: 'Power supply',
+        value: 'Single-phase',
+      },
+      {
+        label: 'Maximum output',
+        value: '7.4 kW',
+      },
+      {
+        label: 'Connector',
+        value: 'Type 2',
+      },
+      {
+        label: 'Cable length',
+        value: '6 metres',
+      },
+      {
+        label: 'Weather rating',
+        value: 'IP65',
+      },
+      {
+        label: 'Connectivity',
+        value: 'Wi-Fi and Bluetooth',
+      },
+    ],
+  },
+  {
+    id: 'dual-drive-22',
+    name: 'DualDrive 22',
+    price: '$2,199',
+    description:
+      'A premium dual-vehicle charging system for larger households, shared garages and high daily driving requirements.',
+    image: '/chargers/dual-drive-22.png',
+    features: [
+      'Up to 22 kW total charging output',
+      'Intelligent power sharing between two vehicles',
+      'RFID access for multiple household drivers',
+      'Advanced scheduling and downloadable usage reports',
+    ],
+    specifications: [
+      {
+        label: 'Power supply',
+        value: 'Three-phase',
+      },
+      {
+        label: 'Maximum output',
+        value: '22 kW shared',
+      },
+      {
+        label: 'Connector',
+        value: 'Dual Type 2',
+      },
+      {
+        label: 'Cable length',
+        value: 'Two 7-metre cables',
+      },
+      {
+        label: 'Weather rating',
+        value: 'IP66',
+      },
+      {
+        label: 'Connectivity',
+        value: 'Wi-Fi, Ethernet and 4G',
+      },
+    ],
+  },
 ];
