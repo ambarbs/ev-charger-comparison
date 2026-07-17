@@ -6,14 +6,14 @@ import { SpecificationList } from './SpecificationList';
 
 type ChargerCardProps = {
   charger: Charger;
+  totalRows: number;
 };
 
-export function ChargerCard({ charger }: ChargerCardProps) {
+export function ChargerCard({ charger, totalRows }: ChargerCardProps) {
   return (
     <article
       className="
         grid
-        row-span-3
         grid-rows-subgrid
         snap-start
         overflow-hidden
@@ -22,6 +22,9 @@ export function ChargerCard({ charger }: ChargerCardProps) {
         border-teal-700
         bg-white
       "
+      style={{
+        gridRow: `span ${totalRows}`,
+      }}
     >
       <ProductSummary charger={charger} />
 
