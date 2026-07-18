@@ -126,20 +126,31 @@ export function ComparisonCards() {
         {/* Mobile navigation controls */}
         <div
           className="
-        sticky
-        top-0
-        z-30
-        mb-2
-        flex
-        justify-end
-        bg-slate-50/95
-        py-2
-        backdrop-blur
-        md:hidden
-      "
+    pointer-events-none
+    sticky
+    top-2
+    z-30
+    mb-3
+    flex
+    justify-end
+    md:hidden
+  "
         >
           <div
-            className="flex items-center gap-2"
+            className="
+              pointer-events-auto
+              flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-slate-200
+              bg-white/95
+              px-2
+              py-1.5
+              shadow-md
+              backdrop-blur
+    "
             aria-label="Charger carousel controls"
           >
             <button
