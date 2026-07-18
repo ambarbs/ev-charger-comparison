@@ -15,8 +15,9 @@ export function ChargerCard({ charger, totalRows }: ChargerCardProps) {
     <article
       className="
         grid
-        grid-rows-subgrid
+        min-w-0
         snap-start
+        grid-rows-subgrid
         overflow-hidden
         rounded-2xl
         border
