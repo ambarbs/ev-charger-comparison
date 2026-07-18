@@ -178,7 +178,7 @@ export function ComparisonCards() {
     ease-out
     ${
       isNavStuck
-        ? 'border border-slate-200 bg-slate-50/95 shadow-md backdrop-blur'
+        ? 'border border-slate-200 bg-slate-50/95 shadow-md'
         : 'border border-transparent bg-transparent shadow-none'
     }
     `}
@@ -251,37 +251,46 @@ export function ComparisonCards() {
           {/* Desktop previous button */}
           <div
             className="
-          hidden
-          items-center
-          justify-center
-          md:col-start-1
-          md:row-start-1
-          md:flex
-        "
+    relative
+    hidden
+    md:col-start-1
+    md:row-start-1
+    md:block
+  "
           >
-            <button
-              type="button"
-              aria-label="Show previous chargers"
-              aria-controls="charger-comparison-carousel"
-              disabled={!canScrollPrevious}
-              onClick={() => scroll('previous')}
-              className={navigationButtonClasses}
+            <div
+              className="
+      sticky
+      top-[50vh]
+      flex
+      -translate-y-1/2
+      justify-center
+    "
             >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                className="size-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
+              <button
+                type="button"
+                aria-label="Show previous chargers"
+                aria-controls="charger-comparison-carousel"
+                disabled={!canScrollPrevious}
+                onClick={() => scroll('previous')}
+                className={navigationButtonClasses}
               >
-                <path
-                  d="m12.5 15-5-5 5-5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  className="size-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    d="m12.5 15-5-5 5-5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
 
           {/* Carousel */}
@@ -328,39 +337,49 @@ export function ComparisonCards() {
           </section>
 
           {/* Desktop next button */}
+          {/* Desktop next button */}
           <div
             className="
-          hidden
-          items-center
-          justify-center
-          md:col-start-3
-          md:row-start-1
-          md:flex
-        "
+    relative
+    hidden
+    md:col-start-3
+    md:row-start-1
+    md:block
+  "
           >
-            <button
-              type="button"
-              aria-label="Show more chargers"
-              aria-controls="charger-comparison-carousel"
-              disabled={!canScrollNext}
-              onClick={() => scroll('next')}
-              className={navigationButtonClasses}
+            <div
+              className="
+      sticky
+      top-[50vh]
+      flex
+      -translate-y-1/2
+      justify-center
+    "
             >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                className="size-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
+              <button
+                type="button"
+                aria-label="Show more chargers"
+                aria-controls="charger-comparison-carousel"
+                disabled={!canScrollNext}
+                onClick={() => scroll('next')}
+                className={navigationButtonClasses}
               >
-                <path
-                  d="m7.5 5 5 5-5 5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  className="size-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    d="m7.5 5 5 5-5 5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
