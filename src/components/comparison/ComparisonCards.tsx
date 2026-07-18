@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-
+import Image from 'next/image';
 import { chargers } from '@/data/chargers';
 
 import { ChargerCard } from './ChargerCard';
@@ -117,6 +117,8 @@ export function ComparisonCards() {
     return () => observer.disconnect();
   }, []);
 
+  const activeCharger = chargers[activeIndex] ?? chargers[0];
+
   const navigationButtonClasses = `
   flex
   size-10
@@ -158,85 +160,126 @@ export function ComparisonCards() {
     sticky
     top-2
     z-30
-    mb-3
+    mb-4
     flex
-    justify-end
     md:hidden
   "
         >
           <div
             className={`
-   pointer-events-auto
-    flex
-    items-center
-    gap-2
-    rounded-full
-    px-2
-    py-1.5
-    transition-all
-    duration-300
-    ease-out
-    ${
-      isNavStuck
-        ? 'border border-slate-200 bg-slate-50/95 shadow-md'
-        : 'border border-transparent bg-transparent shadow-none'
-    }
+      pointer-events-auto
+      flex
+      w-full
+      items-center
+      justify-between
+      gap-3
+      rounded-xl
+      px-2
+      py-1.5
+      transition-all
+      duration-300
+      ease-out
+      ${
+        isNavStuck
+          ? 'border border-slate-200 bg-slate-50/95 shadow-md'
+          : 'border border-transparent bg-transparent shadow-none'
+      }
     `}
             aria-label="Charger carousel controls"
           >
-            <button
-              type="button"
-              aria-label="Show previous charger"
-              disabled={!canScrollPrevious}
-              onClick={() => scroll('previous')}
-              className={navigationButtonClasses}
+            {/* Active charger context */}
+            <div
+              className={`
+        flex
+        min-w-0
+        items-center
+        gap-2
+        transition-all
+        duration-300
+        ${
+          isNavStuck
+            ? 'translate-y-0 opacity-100'
+            : 'pointer-events-none -translate-y-1 opacity-0'
+        }
+      `}
             >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                className="size-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  d="m12.5 15-5-5 5-5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+              <div className="flex min-w-0 items-center gap-4">
+                <div className="relative size-10 shrink-0 overflow-hidden rounded-lg bg-slate-100">
+                  <Image
+                    src={activeCharger.image}
+                    alt=""
+                    fill
+                    sizes="40px"
+                    className="object-cover"
+                  />
+                </div>
 
-            <span
-              className="min-w-12 text-center text-sm font-medium text-slate-600"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              {activeIndex + 1} of {chargers.length}
-            </span>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-slate-900">
+                    {activeCharger.name}
+                  </p>
 
-            <button
-              type="button"
-              aria-label="Show next charger"
-              disabled={!canScrollNext}
-              onClick={() => scroll('next')}
-              className={navigationButtonClasses}
-            >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                className="size-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
+                  <p
+                    className="text-xs text-slate-500"
+                    aria-live="polite"
+                    aria-atomic="true"
+                  >
+                    {activeIndex + 1} of {chargers.length}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation buttons */}
+            <div className="flex shrink-0 items-center gap-2">
+              <button
+                type="button"
+                aria-label="Show previous charger"
+                aria-controls="charger-comparison-carousel"
+                disabled={!canScrollPrevious}
+                onClick={() => scroll('previous')}
+                className={navigationButtonClasses}
               >
-                <path
-                  d="m7.5 5 5 5-5 5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  className="size-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    d="m12.5 15-5-5 5-5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                aria-label="Show next charger"
+                aria-controls="charger-comparison-carousel"
+                disabled={!canScrollNext}
+                onClick={() => scroll('next')}
+                className={navigationButtonClasses}
+              >
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  className="size-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    d="m7.5 5 5 5-5 5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
