@@ -12,6 +12,8 @@ export function ComparisonCards() {
   const [canScrollPrevious, setCanScrollPrevious] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isNavStuck, setIsNavStuck] = useState(false);
+  const navSentinelRef = useRef<HTMLDivElement>(null);
 
   const specificationCount = Math.max(
     ...chargers.map((charger) => charger.specifications.length),
@@ -94,6 +96,27 @@ export function ComparisonCards() {
     };
   }, []);
 
+  useEffect(() => {
+    const sentinel = navSentinelRef.current;
+
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsNavStuck(!entry.isIntersecting);
+      },
+      {
+        threshold: 0,
+        // Matches sticky top-2, which is 8px.
+        rootMargin: '-8px 0px 0px 0px',
+      },
+    );
+
+    observer.observe(sentinel);
+
+    return () => observer.disconnect();
+  }, []);
+
   const navigationButtonClasses = `
   flex
   size-10
@@ -123,6 +146,11 @@ export function ComparisonCards() {
   return (
     <>
       <div className="relative">
+        <div
+          ref={navSentinelRef}
+          className="h-px md:hidden"
+          aria-hidden="true"
+        />
         {/* Mobile navigation controls */}
         <div
           className="
@@ -137,20 +165,23 @@ export function ComparisonCards() {
   "
         >
           <div
-            className="
-              pointer-events-auto
-              flex
-              items-center
-              gap-2
-              rounded-full
-              border
-              border-slate-200
-              bg-white/95
-              px-2
-              py-1.5
-              shadow-md
-              backdrop-blur
-    "
+            className={`
+   pointer-events-auto
+    flex
+    items-center
+    gap-2
+    rounded-full
+    px-2
+    py-1.5
+    transition-all
+    duration-300
+    ease-out
+    ${
+      isNavStuck
+        ? 'border border-slate-200 bg-slate-50/95 shadow-md backdrop-blur'
+        : 'border border-transparent bg-transparent shadow-none'
+    }
+    `}
             aria-label="Charger carousel controls"
           >
             <button

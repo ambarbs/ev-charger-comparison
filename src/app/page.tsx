@@ -2,10 +2,10 @@ import { ComparisonCards } from '@/components/comparison/ComparisonCards';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-50 px-6 py-12">
+    <main className="min-h-screen bg-slate-50 px-6 py-6 md:py-12">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8">
-          <p className="text-sm font-semibold uppercase tracking-wider text-teal-700">
+        <div className="mb-2 md:mb-8">
+          <p className="text-sm font-semibold tracking-wider text-teal-700 uppercase">
             Home EV charging
           </p>
 
