@@ -337,7 +337,6 @@ export function ComparisonCards() {
           </section>
 
           {/* Desktop next button */}
-          {/* Desktop next button */}
           <div
             className="
     relative

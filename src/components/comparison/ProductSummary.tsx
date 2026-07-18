@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Charger } from '@/types/comparison';
 
 type ProductSummaryProps = {
@@ -14,9 +15,14 @@ export function ProductSummary({ charger }: ProductSummaryProps) {
           </span>
         )}
       </div>
-
-      <div className="mt-4 flex aspect-4/3 items-center justify-center rounded-xl bg-slate-100 text-sm text-slate-500">
-        Charger image
+      <div className="relative mt-4 aspect-4/3 overflow-hidden rounded-xl bg-slate-100">
+        <Image
+          src={charger.image}
+          alt={`${charger.name} EV home charger`}
+          fill
+          sizes="(max-width: 768px) 80vw, 320px"
+          className="object-cover"
+        />
       </div>
 
       <h2 className="mt-5 text-2xl font-bold text-slate-950">{charger.name}</h2>

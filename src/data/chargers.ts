@@ -7,7 +7,7 @@ export const chargers: Charger[] = [
     price: '$899',
     description:
       'A compact home charger designed for everyday city driving and smaller households.',
-    image: '/chargers/urban-charge-7.png',
+    image: '/chargers/urban-charge-7.avif',
     badge: 'Best value',
     features: [
       'Up to 7.4 kW charging',
@@ -48,7 +48,7 @@ export const chargers: Charger[] = [
     price: '$1,299',
     description:
       'A smart charger with solar integration, scheduled charging and detailed energy usage insights.',
-    image: '/chargers/volt-home-11.png',
+    image: '/chargers/volt-home-11.avif',
     badge: 'Recommended',
     features: [
       'Up to 11 kW charging with three-phase power',
@@ -89,7 +89,7 @@ export const chargers: Charger[] = [
     price: '$1,799',
     description:
       'A high-performance three-phase charger suitable for households with multiple electric vehicles.',
-    image: '/chargers/drive-max-22.png',
+    image: '/chargers/drive-max-22.avif',
     features: [
       'Up to 22 kW high-speed charging',
       'Supports multiple driver profiles',
@@ -129,7 +129,7 @@ export const chargers: Charger[] = [
     price: '$1,099',
     description:
       'A solar-focused home charger designed to prioritise surplus rooftop energy and reduce grid usage.',
-    image: '/chargers/solar-flow-7.png',
+    image: '/chargers/solar-flow-7.avif',
     badge: 'Best for solar',
     features: [
       'Up to 7.4 kW charging',
@@ -170,7 +170,7 @@ export const chargers: Charger[] = [
     price: '$2,199',
     description:
       'A premium dual-vehicle charging system for larger households, shared garages and high daily driving requirements.',
-    image: '/chargers/dual-drive-22.png',
+    image: '/chargers/dual-drive-22.avif',
     features: [
       'Up to 22 kW total charging output',
       'Intelligent power sharing between two vehicles',
