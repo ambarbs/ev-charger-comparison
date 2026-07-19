@@ -1,119 +1,26 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { getComparisonRowCount } from '@/components/comparison/utils/carousel';
 import { chargers } from '@/data/chargers';
-import {
-  findClosestItemIndex,
-  getComparisonRowCount,
-  getScrollBoundaries,
-} from '@/components/comparison/utils/carousel';
 
 import { ChargerCard } from './ChargerCard';
-import { MobileCarouselControls } from './MobileCarouselControls';
 import { DesktopCarouselControl } from './DesktopCarouselControl';
+import { MobileCarouselControls } from './MobileCarouselControls';
+import { useComparisonCarousel } from './hooks/useComparisonCarousel';
 
 export function ComparisonCards() {
-  const containerRef = useRef<HTMLElement>(null);
-
-  const [canScrollPrevious, setCanScrollPrevious] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isNavStuck, setIsNavStuck] = useState(false);
-  const navSentinelRef = useRef<HTMLDivElement>(null);
+  const {
+    containerRef,
+    navSentinelRef,
+    canScrollPrevious,
+    canScrollNext,
+    activeIndex,
+    isNavStuck,
+    handleCarouselScroll,
+    scroll,
+  } = useComparisonCarousel();
 
   const totalRows = getComparisonRowCount(chargers);
-
-  const updateScrollState = () => {
-    const container = containerRef.current;
-
-    if (!container) {
-      return;
-    }
-
-    const boundaries = getScrollBoundaries({
-      scrollLeft: container.scrollLeft,
-      scrollWidth: container.scrollWidth,
-      clientWidth: container.clientWidth,
-    });
-
-    setCanScrollPrevious(boundaries.canScrollPrevious);
-
-    setCanScrollNext(boundaries.canScrollNext);
-  };
-
-  const getActiveCardIndex = () => {
-    const container = containerRef.current;
-
-    if (!container) {
-      return 0;
-    }
-
-    const itemOffsets = Array.from(
-      container.children,
-      (child) => (child as HTMLElement).offsetLeft,
-    );
-
-    return findClosestItemIndex(itemOffsets, container.scrollLeft);
-  };
-
-  const handleCarouselScroll = () => {
-    setActiveIndex(getActiveCardIndex());
-    updateScrollState();
-  };
-
-  function scroll(direction: 'previous' | 'next') {
-    const container = containerRef.current;
-
-    if (!container) {
-      return;
-    }
-
-    const card = container.querySelector<HTMLElement>('article');
-    const cardWidth = card?.offsetWidth ?? 320;
-    const gap = 20;
-
-    container.scrollBy({
-      left: direction === 'next' ? cardWidth + gap : -(cardWidth + gap),
-      behavior: 'smooth',
-    });
-  }
-
-  useEffect(() => {
-    const container = containerRef.current;
-
-    if (!container) {
-      return;
-    }
-
-    updateScrollState();
-
-    window.addEventListener('resize', updateScrollState);
-
-    return () => {
-      window.removeEventListener('resize', updateScrollState);
-    };
-  }, []);
-
-  useEffect(() => {
-    const sentinel = navSentinelRef.current;
-
-    if (!sentinel) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsNavStuck(!entry.isIntersecting);
-      },
-      {
-        threshold: 0,
-        // Matches sticky top-2, which is 8px.
-        rootMargin: '-8px 0px 0px 0px',
-      },
-    );
-
-    observer.observe(sentinel);
-
-    return () => observer.disconnect();
-  }, []);
 
   const activeCharger = chargers[activeIndex] ?? chargers[0];
 
