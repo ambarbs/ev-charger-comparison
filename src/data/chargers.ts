@@ -47,8 +47,7 @@ export const chargers: Charger[] = [
     id: 'volt-home-11',
     name: 'VoltHome 11',
     hardwarePrice: 1299,
-    installationMessage:
-      'Installation quoted separately after an electrical assessment',
+    installationMessage: 'Installation quoted separately',
     description:
       'A smart charger with solar integration, scheduled charging and detailed energy usage insights.',
     image: '/chargers/volt-home-11.avif',
@@ -90,8 +89,7 @@ export const chargers: Charger[] = [
     id: 'drive-max-22',
     name: 'DriveMax 22',
     hardwarePrice: 1799,
-    installationMessage:
-      'Installation quoted separately; site assessment required',
+    installationMessage: 'Installation quoted separately',
     description:
       'A high-performance three-phase charger suitable for households with multiple electric vehicles.',
     image: '/chargers/drive-max-22.avif',
@@ -132,7 +130,7 @@ export const chargers: Charger[] = [
     id: 'solar-flow-7',
     name: 'SolarFlow 7',
     hardwarePrice: 1499,
-    installationMessage: 'Installation and solar integration quoted separately',
+    installationMessage: 'Installation quoted separately',
     description:
       'A solar-focused home charger designed to prioritise surplus rooftop energy and reduce grid usage.',
     image: '/chargers/solar-flow-7.avif',
@@ -174,8 +172,7 @@ export const chargers: Charger[] = [
     id: 'dual-drive-22',
     name: 'DualDrive 22',
     hardwarePrice: 2299,
-    installationMessage:
-      'Installation quoted separately after a site assessment',
+    installationMessage: 'Installation quoted separately',
     description:
       'A premium dual-vehicle charging system for larger households, shared garages and high daily driving requirements.',
     image: '/chargers/dual-drive-22.avif',
