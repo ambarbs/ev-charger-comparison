@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { chargers } from '@/data/chargers';
 
 import { ChargerCard } from './ChargerCard';
 import { CarouselNavigationButton } from './CarouselNavigationButton';
+import { MobileCarouselControls } from './MobileCarouselControls';
 
 export function ComparisonCards() {
   const containerRef = useRef<HTMLElement>(null);
@@ -128,101 +128,17 @@ export function ComparisonCards() {
           className="h-px md:hidden"
           aria-hidden="true"
         />
-        {/* Mobile navigation controls */}
-        <div
-          className="
-    pointer-events-none
-    sticky
-    top-2
-    z-30
-    mb-4
-    flex
-    md:hidden
-  "
-        >
-          <div
-            className={`
-      pointer-events-auto
-      flex
-      w-full
-      items-center
-      justify-between
-      gap-3
-      rounded-xl
-      px-2
-      py-1.5
-      transition-all
-      duration-300
-      ease-out
-      ${
-        isNavStuck
-          ? 'border border-slate-200 bg-slate-50/95 shadow-md'
-          : 'border border-transparent bg-transparent shadow-none'
-      }
-    `}
-            aria-label="Charger carousel controls"
-          >
-            {/* Active charger context */}
-            <div
-              className={`
-        flex
-        min-w-0
-        items-center
-        gap-2
-        transition-all
-        duration-300
-        ${
-          isNavStuck
-            ? 'translate-y-0 opacity-100'
-            : 'pointer-events-none -translate-y-1 opacity-0'
-        }
-      `}
-            >
-              <div className="flex min-w-0 items-center gap-4">
-                <div className="relative size-10 shrink-0 overflow-hidden rounded-lg bg-slate-100">
-                  <Image
-                    src={activeCharger.image}
-                    alt=""
-                    fill
-                    sizes="40px"
-                    className="object-cover"
-                  />
-                </div>
 
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold text-slate-900">
-                    {activeCharger.name}
-                  </p>
-
-                  <p
-                    className="text-xs text-slate-500"
-                    aria-live="polite"
-                    aria-atomic="true"
-                  >
-                    {activeIndex + 1} of {chargers.length}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Navigation buttons */}
-            <div className="flex shrink-0 items-center gap-2">
-              <CarouselNavigationButton
-                direction="previous"
-                label="Show previous charger"
-                disabled={!canScrollPrevious}
-                onClick={() => scroll('previous')}
-              />
-
-              <CarouselNavigationButton
-                direction="next"
-                label="Show next charger"
-                disabled={!canScrollNext}
-                onClick={() => scroll('next')}
-              />
-            </div>
-          </div>
-        </div>
+        <MobileCarouselControls
+          activeCharger={activeCharger}
+          activeIndex={activeIndex}
+          total={chargers.length}
+          isStuck={isNavStuck}
+          canScrollPrevious={canScrollPrevious}
+          canScrollNext={canScrollNext}
+          onPrevious={() => scroll('previous')}
+          onNext={() => scroll('next')}
+        />
 
         {/* Desktop arrows and comparison carousel */}
         <div
