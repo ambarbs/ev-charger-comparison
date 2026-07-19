@@ -40,9 +40,24 @@ export function ProductSummary({ charger }: ProductSummaryProps) {
           {formattedHardwarePrice}
         </p>
 
-        <p className="mt-1 text-sm leading-5 text-slate-500">
-          {charger.installationMessage}
-        </p>
+        <div className="mt-2 flex items-start gap-2 rounded-lg border border-slate-200 bg-slate-100 px-3 py-2 text-sm leading-5 text-slate-700">
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 20 20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            className="mt-0.5 size-4 shrink-0"
+          >
+            <circle cx="10" cy="10" r="7.25" />
+
+            <path d="M10 9v4" strokeLinecap="round" />
+
+            <path d="M10 6.75h.01" strokeLinecap="round" />
+          </svg>
+
+          <span>{charger.installationMessage}</span>
+        </div>
       </div>
 
       <p className="mt-4 text-sm leading-6 text-slate-600">
