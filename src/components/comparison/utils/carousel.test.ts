@@ -12,7 +12,8 @@ function createCharger(specificationCount: number): Charger {
   return {
     id: `charger-${specificationCount}`,
     name: `Test charger ${specificationCount}`,
-    price: '$999',
+    hardwarePrice: 999,
+    installationMessage: 'Installation quoted separately',
     description: 'Test charger description',
     image: '/chargers/test-charger.avif',
     features: [],

@@ -6,6 +6,12 @@ type ProductSummaryProps = {
 };
 
 export function ProductSummary({ charger }: ProductSummaryProps) {
+  const formattedHardwarePrice = new Intl.NumberFormat('en-AU', {
+    style: 'currency',
+    currency: 'AUD',
+    maximumFractionDigits: 0,
+  }).format(charger.hardwarePrice);
+
   return (
     <header className="p-6">
       <div className="flex min-h-6 items-start">
@@ -27,12 +33,16 @@ export function ProductSummary({ charger }: ProductSummaryProps) {
 
       <h2 className="mt-5 text-2xl font-bold text-slate-950">{charger.name}</h2>
 
-      <div className="mt-2 flex items-baseline gap-2">
-        <span className="text-3xl font-bold text-slate-950">
-          {charger.price}
-        </span>
+      <div className="mt-3">
+        <p className="text-sm font-medium text-slate-600">Hardware from</p>
 
-        <span className="text-sm text-slate-500">charger only</span>
+        <p className="mt-0.5 text-3xl font-bold text-slate-950">
+          {formattedHardwarePrice}
+        </p>
+
+        <p className="mt-1 text-sm leading-5 text-slate-500">
+          {charger.installationMessage}
+        </p>
       </div>
 
       <p className="mt-4 text-sm leading-6 text-slate-600">

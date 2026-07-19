@@ -6,7 +6,8 @@ export type ChargerSpecification = {
 export type Charger = {
   id: string;
   name: string;
-  price: string;
+  hardwarePrice: number;
+  installationMessage: string;
   description: string;
   image: string;
   badge?: string;
