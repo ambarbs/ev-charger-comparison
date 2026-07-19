@@ -2,6 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { chargers } from '@/data/chargers';
+import {
+  findClosestItemIndex,
+  getComparisonRowCount,
+  getScrollBoundaries,
+} from '@/components/comparison/utils/carousel';
 
 import { ChargerCard } from './ChargerCard';
 import { MobileCarouselControls } from './MobileCarouselControls';
@@ -16,11 +21,7 @@ export function ComparisonCards() {
   const [isNavStuck, setIsNavStuck] = useState(false);
   const navSentinelRef = useRef<HTMLDivElement>(null);
 
-  const specificationCount = Math.max(
-    ...chargers.map((charger) => charger.specifications.length),
-  );
-
-  const totalRows = 4 + specificationCount;
+  const totalRows = getComparisonRowCount(chargers);
 
   const updateScrollState = () => {
     const container = containerRef.current;
@@ -29,10 +30,15 @@ export function ComparisonCards() {
       return;
     }
 
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const boundaries = getScrollBoundaries({
+      scrollLeft: container.scrollLeft,
+      scrollWidth: container.scrollWidth,
+      clientWidth: container.clientWidth,
+    });
 
-    setCanScrollPrevious(container.scrollLeft > 1);
-    setCanScrollNext(container.scrollLeft < maxScrollLeft - 1);
+    setCanScrollPrevious(boundaries.canScrollPrevious);
+
+    setCanScrollNext(boundaries.canScrollNext);
   };
 
   const getActiveCardIndex = () => {
@@ -42,21 +48,12 @@ export function ComparisonCards() {
       return 0;
     }
 
-    const cards = Array.from(container.children) as HTMLElement[];
+    const itemOffsets = Array.from(
+      container.children,
+      (child) => (child as HTMLElement).offsetLeft,
+    );
 
-    if (cards.length === 0) {
-      return 0;
-    }
-
-    return cards.reduce((closestIndex, card, index) => {
-      const closestDistance = Math.abs(
-        cards[closestIndex].offsetLeft - container.scrollLeft,
-      );
-
-      const currentDistance = Math.abs(card.offsetLeft - container.scrollLeft);
-
-      return currentDistance < closestDistance ? index : closestIndex;
-    }, 0);
+    return findClosestItemIndex(itemOffsets, container.scrollLeft);
   };
 
   const handleCarouselScroll = () => {
