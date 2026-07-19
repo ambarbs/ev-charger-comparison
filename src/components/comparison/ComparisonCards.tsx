@@ -1,5 +1,6 @@
 'use client';
 
+import type { CSSProperties } from 'react';
 import { getComparisonRowCount } from '@/components/comparison/utils/carousel';
 import { chargers } from '@/data/chargers';
 
@@ -64,37 +65,40 @@ export function ComparisonCards() {
             onScroll={handleCarouselScroll}
             aria-label="EV charger comparison"
             className="
-      col-start-1
-      row-start-1
-      grid
-      min-w-0
-      snap-x
-      snap-mandatory
-      scrollbar-none
-      auto-cols-[calc(100%-3rem)]
-      grid-flow-col
-      gap-x-4
-      overflow-x-auto
-      scroll-smooth
-      pb-4
+    col-start-1
+    row-start-1
+    grid
+    min-w-0
+    snap-x
+    snap-mandatory
+    scrollbar-none
+    auto-cols-[calc(100%-3rem)]
+    grid-flow-col
+    items-start
+    gap-x-4
+    overflow-x-auto
+    scroll-smooth
+    pb-4
 
-      md:col-start-2
-      md:row-start-1
-      md:auto-cols-[minmax(290px,320px)]
-      md:gap-x-5
+    md:col-start-2
+    md:row-start-1
+    md:scroll-px-0
+    md:auto-cols-[minmax(290px,320px)]
+    md:grid-rows-[repeat(var(--comparison-row-count),auto)]
+    md:items-stretch
+    md:gap-x-5
+    md:px-0
 
-      [&::-webkit-scrollbar]:hidden
-    "
-            style={{
-              gridTemplateRows: `repeat(${totalRows}, auto)`,
-            }}
+    [&::-webkit-scrollbar]:hidden
+  "
+            style={
+              {
+                '--comparison-row-count': totalRows,
+              } as CSSProperties
+            }
           >
             {chargers.map((charger) => (
-              <ChargerCard
-                key={charger.id}
-                charger={charger}
-                totalRows={totalRows}
-              />
+              <ChargerCard key={charger.id} charger={charger} />
             ))}
           </section>
 
