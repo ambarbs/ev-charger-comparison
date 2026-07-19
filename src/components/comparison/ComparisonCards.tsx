@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { chargers } from '@/data/chargers';
 
 import { ChargerCard } from './ChargerCard';
+import { CarouselNavigationButton } from './CarouselNavigationButton';
 
 export function ComparisonCards() {
   const containerRef = useRef<HTMLElement>(null);
@@ -119,32 +120,6 @@ export function ComparisonCards() {
 
   const activeCharger = chargers[activeIndex] ?? chargers[0];
 
-  const navigationButtonClasses = `
-  flex
-  size-10
-  items-center
-  justify-center
-  rounded-full
-  border
-  transition
-  focus-visible:outline-2
-  focus-visible:outline-offset-2
-  focus-visible:outline-teal-700
-  enabled:cursor-pointer
-  enabled:border-slate-300
-  enabled:bg-white
-  enabled:text-slate-800
-  enabled:shadow-sm
-  enabled:hover:border-teal-700
-  enabled:hover:bg-teal-50
-  disabled:cursor-not-allowed
-  disabled:border-slate-200
-  disabled:bg-slate-100
-  disabled:text-slate-300
-  disabled:shadow-none
-  disabled:opacity-60
-`;
-
   return (
     <>
       <div className="relative">
@@ -232,53 +207,19 @@ export function ComparisonCards() {
 
             {/* Navigation buttons */}
             <div className="flex shrink-0 items-center gap-2">
-              <button
-                type="button"
-                aria-label="Show previous charger"
-                aria-controls="charger-comparison-carousel"
+              <CarouselNavigationButton
+                direction="previous"
+                label="Show previous charger"
                 disabled={!canScrollPrevious}
                 onClick={() => scroll('previous')}
-                className={navigationButtonClasses}
-              >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 20 20"
-                  className="size-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    d="m12.5 15-5-5 5-5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+              />
 
-              <button
-                type="button"
-                aria-label="Show next charger"
-                aria-controls="charger-comparison-carousel"
+              <CarouselNavigationButton
+                direction="next"
+                label="Show next charger"
                 disabled={!canScrollNext}
                 onClick={() => scroll('next')}
-                className={navigationButtonClasses}
-              >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 20 20"
-                  className="size-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    d="m7.5 5 5 5-5 5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+              />
             </div>
           </div>
         </div>
@@ -310,29 +251,12 @@ export function ComparisonCards() {
       justify-center
     "
             >
-              <button
-                type="button"
-                aria-label="Show previous chargers"
-                aria-controls="charger-comparison-carousel"
+              <CarouselNavigationButton
+                direction="previous"
+                label="Show previous chargers"
                 disabled={!canScrollPrevious}
                 onClick={() => scroll('previous')}
-                className={navigationButtonClasses}
-              >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 20 20"
-                  className="size-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    d="m12.5 15-5-5 5-5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+              />
             </div>
           </div>
 
@@ -398,29 +322,12 @@ export function ComparisonCards() {
       justify-center
     "
             >
-              <button
-                type="button"
-                aria-label="Show more chargers"
-                aria-controls="charger-comparison-carousel"
+              <CarouselNavigationButton
+                direction="next"
+                label="Show more chargers"
                 disabled={!canScrollNext}
                 onClick={() => scroll('next')}
-                className={navigationButtonClasses}
-              >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 20 20"
-                  className="size-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    d="m7.5 5 5 5-5 5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+              />
             </div>
           </div>
         </div>
