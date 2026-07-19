@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { chargers } from '@/data/chargers';
 
 import { ChargerCard } from './ChargerCard';
-import { CarouselNavigationButton } from './CarouselNavigationButton';
 import { MobileCarouselControls } from './MobileCarouselControls';
+import { DesktopCarouselControl } from './DesktopCarouselControl';
 
 export function ComparisonCards() {
   const containerRef = useRef<HTMLElement>(null);
@@ -143,69 +143,44 @@ export function ComparisonCards() {
         {/* Desktop arrows and comparison carousel */}
         <div
           className="
-        grid
-        grid-cols-1
-        md:grid-cols-[3rem_minmax(0,1fr)_3rem]
-      "
-        >
-          {/* Desktop previous button */}
-          <div
-            className="
-    relative
-    hidden
-    md:col-start-1
-    md:row-start-1
-    md:block
+    grid
+    grid-cols-1
+    md:grid-cols-[3rem_minmax(0,1fr)_3rem]
   "
-          >
-            <div
-              className="
-      sticky
-      top-[50vh]
-      flex
-      -translate-y-1/2
-      justify-center
-    "
-            >
-              <CarouselNavigationButton
-                direction="previous"
-                label="Show previous chargers"
-                disabled={!canScrollPrevious}
-                onClick={() => scroll('previous')}
-              />
-            </div>
-          </div>
+        >
+          <DesktopCarouselControl
+            direction="previous"
+            disabled={!canScrollPrevious}
+            onClick={() => scroll('previous')}
+          />
 
-          {/* Carousel */}
           <section
             id="charger-comparison-carousel"
             ref={containerRef}
             onScroll={handleCarouselScroll}
             aria-label="EV charger comparison"
             className="
-          col-start-1
-          row-start-1
-          grid
-          min-w-0
-          snap-x
-          snap-mandatory
-          scrollbar-none
-          auto-cols-[calc(100%-3rem)]
-          grid-flow-col
-          gap-x-4
-          overflow-x-auto
-          scroll-smooth
-          pb-4
+      col-start-1
+      row-start-1
+      grid
+      min-w-0
+      snap-x
+      snap-mandatory
+      scrollbar-none
+      auto-cols-[calc(100%-3rem)]
+      grid-flow-col
+      gap-x-4
+      overflow-x-auto
+      scroll-smooth
+      pb-4
 
-          md:col-start-2
-          md:row-start-1
-          md:scroll-px-0
-          md:auto-cols-[minmax(290px,320px)]
-          md:gap-x-5
-          md:px-0
+      md:col-start-2
+      md:row-start-1
+      md:auto-cols-[minmax(290px,320px)]
+      md:gap-x-5
 
-          [&::-webkit-scrollbar]:hidden
-        "
+      [&::-webkit-scrollbar]:hidden
+    "
             style={{
               gridTemplateRows: `repeat(${totalRows}, auto)`,
             }}
@@ -219,33 +194,11 @@ export function ComparisonCards() {
             ))}
           </section>
 
-          {/* Desktop next button */}
-          <div
-            className="
-    relative
-    hidden
-    md:col-start-3
-    md:row-start-1
-    md:block
-  "
-          >
-            <div
-              className="
-      sticky
-      top-[50vh]
-      flex
-      -translate-y-1/2
-      justify-center
-    "
-            >
-              <CarouselNavigationButton
-                direction="next"
-                label="Show more chargers"
-                disabled={!canScrollNext}
-                onClick={() => scroll('next')}
-              />
-            </div>
-          </div>
+          <DesktopCarouselControl
+            direction="next"
+            disabled={!canScrollNext}
+            onClick={() => scroll('next')}
+          />
         </div>
       </div>
     </>
