@@ -37,7 +37,7 @@ export function MobileCarouselControls({
         md:hidden
       "
     >
-      <div
+      <nav
         className={`
           pointer-events-auto
           flex
@@ -116,7 +116,7 @@ export function MobileCarouselControls({
             onClick={onNext}
           />
         </div>
-      </div>
+      </nav>
     </div>
   );
 }
